@@ -336,7 +336,7 @@ class DiffusionUNet(nn.Module):
                                        stride=1,
                                        padding=1)
 
-        self.conv_in2 = torch.nn.Conv2d(self.sar_channels,
+        self.conv_in2 = ComplexConv2d(self.sar_channels,
                                        self.ch,
                                        kernel_size=3,
                                        stride=1,
