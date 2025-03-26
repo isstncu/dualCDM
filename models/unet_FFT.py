@@ -441,8 +441,9 @@ class DiffusionUNet(nn.Module):
         xx = self.conv_in(x)
         hs = [xx] 
 
-        xx2 = self.conv_in2(x[:,:self.sar_channels,:,:]) 
+        xx2 = x[:,:self.sar_channels,:,:]
         fft_xx = torch.fft.fftn(xx2, dim=(-2, -1))
+        fft_xx = self.conv_in2(fft_xx)
         
         hs_fft = [fft_xx]
         
